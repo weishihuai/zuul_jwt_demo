@@ -1,0 +1,15 @@
+server:
+  port: 1111  #服务端口号
+eureka:
+  client:
+    fetch-registry: false  #是否检索服务
+    register-with-eureka: false  #表示不向Eureka注册自身服务
+    service-url: #服务注册中心地址，其他服务可以通过指定eureka.client.serviceUrl.defaultZone=http://localhost:1111/eureka/注册到Eureka上
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    #主机名
+    hostname: localhost
+spring:
+  application:
+    #服务名称
+    name: eureka-server

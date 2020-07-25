@@ -1,0 +1,23 @@
+server:
+  port: 3333
+spring:
+  application:
+    name: api-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
+zuul:
+  routes:
+    goods-service:
+      path: /goods/**
+      serviceId:  goods-service
+    api-gateway:
+      path: /api/login/**
+      serviceId: api-gateway
+common:
+  login:
+    url: /api/login/userLogin  #登录请求地址,可设置多个,使用逗号分隔开
+exclude:
+  auth:
+    url: /api/login/userLogin #不需要授权验证的请求地址,可设置多个,使用逗号分隔开,会跳过AuthFilter授权验证
